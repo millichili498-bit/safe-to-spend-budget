@@ -540,7 +540,7 @@
     const cards = state.funds.length ? state.funds.map(function (f) {
       const pct = f.target > 0 ? Math.min(100, Math.round((f.saved / f.target) * 100)) : 0;
       return '<article class="card"><div class="section-head"><h2>' + esc(f.name) + '</h2><span class="badge">' + pct + '% saved</span></div><div class="progress" aria-hidden="true"><span style="width:' + pct + '%"></span></div><p class="meta" style="margin-top:8px">Saved ' + money(f.saved) + " of " + money(f.target) + " · still to set aside " + money(f.setAside || 0) + (f.byDate ? " by " + formatDate(f.byDate) : "") + '</p><div class="actions"><button class="btn" data-action="open-contrib" data-id="' + f.id + '">Add contribution</button><button class="btn btn-ghost" data-action="edit-fund" data-id="' + f.id + '">Edit</button><button class="btn btn-ghost" data-action="delete-fund" data-id="' + f.id + '">Delete</button></div></article>';
-    }).join("") : '<div class="card empty"><h3>No future funds yet</h3><p>Christmas, insurance, travel, birthdays. Set aside an amount and SafeSpend protects it until you move the money.</p><button class="btn btn-primary" data-action="open" data-modal="fund">Add a fund</button></div>';
+    }).join("") : '<div class="card empty"><h3>No future funds yet</h3><p>Eid gifts, insurance, travel, school fees. Set aside an amount and SafeSpend protects it until you move the money.</p><button class="btn btn-primary" data-action="open" data-modal="fund">Add a fund</button></div>';
     return pageHead("Future funds", "Irregular expenses, funded on purpose", "Saved money has already left spendable cash. Only the amount still to set aside is protected again.") +
       '<div class="actions"><button class="btn btn-primary" data-action="open" data-modal="fund">Add future fund</button></div><div class="grid-2">' + cards + "</div>";
   }
@@ -1110,14 +1110,14 @@
     state = defaultState();
     state.onboarded = true;
     state.openingBalance = 2480;
-    state.settings.displayName = "Alex";
+    state.settings.displayName = "Sara";
     state.settings.paySchedule = "biweekly";
     state.settings.nextPayday = payday;
     state.settings.safetyBuffer = 200;
     state.bills = [
       { id: uid(), name: "Rent", amount: 900, dueDate: addDays(today, 4), schedule: "monthly", autopay: true, paid: false, kind: "bill" },
       { id: uid(), name: "Phone", amount: 45, dueDate: addDays(today, 6), schedule: "monthly", autopay: true, paid: false, kind: "bill" },
-      { id: uid(), name: "Credit card minimum", amount: 75, dueDate: addDays(today, 8), schedule: "monthly", autopay: false, paid: false, kind: "debt" }
+      { id: uid(), name: "Internet", amount: 75, dueDate: addDays(today, 8), schedule: "monthly", autopay: false, paid: false, kind: "bill" }
     ];
     state.funds = [
       { id: uid(), name: "Car insurance", target: 480, saved: 160, setAside: 80, byDate: payday, protectAlways: true }
